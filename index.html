@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pragmatic Protests</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #001229;
+      --bg-alt: #0b2447;
+      --accent: #bf0a30;
+      --accent-blue: #002868;
+      --text: #f8fafc;
+      --muted: #d8e4ff;
+      --card-bg: rgba(2, 21, 46, 0.86);
+      --border: rgba(216, 228, 255, 0.22);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Montserrat", sans-serif;
+      background: linear-gradient(120deg, rgba(191, 10, 48, 0.3), transparent 35%),
+        linear-gradient(240deg, rgba(0, 40, 104, 0.32), transparent 40%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 92px 20px 68px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before,
+    header::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 -120px 0;
+      height: 220px;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.28) 0,
+        rgba(255, 255, 255, 0.28) 60px,
+        rgba(191, 10, 48, 0.32) 60px,
+        rgba(191, 10, 48, 0.32) 120px
+      );
+      transform: rotate(-3deg);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    header::after {
+      inset: -140px 0 auto 0;
+      height: 260px;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(0, 40, 104, 0.45) 0,
+        rgba(0, 40, 104, 0.45) 80px,
+        rgba(255, 255, 255, 0.22) 80px,
+        rgba(255, 255, 255, 0.22) 140px
+      );
+      transform: rotate(4deg);
+      opacity: 0.3;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    header p {
+      margin-top: 24px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      color: var(--muted);
+      position: relative;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      padding: 0 20px 80px;
+      max-width: 980px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: clamp(24px, 3vw, 36px);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.35);
+      backdrop-filter: blur(12px);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .card h2::after {
+      content: "";
+      display: inline-block;
+      width: clamp(42px, 5vw, 58px);
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent) 0%, #ffffff 50%, var(--accent-blue) 100%);
+      border-radius: 999px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: clamp(1rem, 1.6vw, 1.12rem);
+    }
+
+    .callout {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 14px;
+      background: linear-gradient(120deg, rgba(191, 10, 48, 0.2), rgba(0, 40, 104, 0.2));
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .callout span {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 6px;
+    }
+
+    .team {
+      display: grid;
+      gap: 24px;
+    }
+
+    .team-photo {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 18px 40px rgba(0, 20, 46, 0.5);
+    }
+
+    .team-photo::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--accent) 0%, #ffffff 50%, var(--accent-blue) 100%);
+    }
+
+    .team-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px 60px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 72px 16px 52px;
+      }
+
+      main {
+        gap: 48px;
+        padding: 0 16px 64px;
+      }
+    }
+
+    @media (min-width: 840px) {
+      .team {
+        grid-template-columns: 3fr 2fr;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pragmatic Protests</h1>
+    <p>Protests should work. Through dispersed protests, we make sure that your message gets heard where it's needed most.</p>
+  </header>
+
+    <section class="card" aria-labelledby="about-heading">
+      <h2 id="about-heading">What Is A Dispersed Protest?</h2>
+      <p>Protests as they are now are ineffective. Grouping all of your participants into one easily avoided location, where the only people they're likely to encounter are others who believe as they do, is not an effective way to influence the opinions of millions of Americans.</p>
+	  <p>I believe that protests should be respectful of your time, and be effective. They should inform and change people's minds, not just be social events for the likeminded. They should reflect the ideals of their participants, not just the often more radical views of the loudest among them.</p>
+	  <p>Protests should make sure that they work.
+	  <p>Dispersed protests are the solution to this problem. Like the Minutemen of the American Revolution, in a dispersed protest, participants are placed at strategically useful locations, with targeted messages, in order to be the most effective that they can be.</p>
+	  <p>A single protester outside of a grocery store with details about what products inside are affected by tarriffs will change more minds than a thousand protesters in a park. A handful of protesters can, with minimal disruption to their schedules, cover a location for the entirety of its open hours.</p>
+	  <p>Sign up with us, and we will help coordinate protesters, provide you with communicative materials, and ensure that you can make the most change possible. And, if you have an idea of a dispersed protest, we can make that happen.</p>
+    </section>
+
+  <main>
+    <section class="card" aria-labelledby="action-heading">
+      <h2 id="action-heading">What Can You Do</h2>
+      <div class="callout">
+        <span>Take the first step</span>
+        Email pragmaticprotests@gmail.com
+      </div>
+      <p>We will find a time and place for you to show your passion and to effectively convince your fellow Americans with the strongest possible effect.</p>
+    </section>
+	
+    <section class="card" aria-labelledby="team-heading">
+      <h2 id="team-heading">Who's Behind This</h2>
+      <div class="team">
+        <figure class="team-photo">
+          <img src="organizer.png" alt="Gideon Vicini speaking at a 50501 protest" />
+        </figure>
+        <div>
+      <p>When signing up with a political organization, you want to know who you're signing up with. That's why I put my name on this. If we're going to be brave enough to defend the American way, we have to be brave enough to say our own names.</p>
+	  <p>My name is Gideon Vicini. I'm a US Army veteran, a legal professional, and a patriot, and I believe that means standing up for what you believe in. I believe in democracy.</p>
+	  <p>But I also believe that we should be doing that in a way that works.</p>
+      <p>I've led protests before. I actually was the founder of the Louisiana chapter of 50501. But I've found some consistent issues, and I'm hoping that Pragmatic Protests can address that issue.</p>
+		</div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    &copy; <span id="year"></span> Pragmatic Protests. All rights reserved.
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
